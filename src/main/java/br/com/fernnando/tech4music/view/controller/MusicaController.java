@@ -56,7 +56,7 @@ public class MusicaController {
     public ResponseEntity<MusicaResponse> obterPorId(@PathVariable String id){
         Optional<MusicaDto> musicadto = servico.obterPorId(id);
         if(musicadto.isPresent()){
-            MusicaResponse musicaResponse = mapper.map(musicadto,MusicaResponse.class);
+            MusicaResponse musicaResponse = mapper.map(musicadto.get(),MusicaResponse.class);
             return new ResponseEntity<>(musicaResponse,HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
